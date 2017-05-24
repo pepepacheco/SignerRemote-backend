@@ -1,0 +1,9 @@
+services:
+  login.user.model:
+    class: LoginBundle\Model\UserModel
+    arguments: ['@doctrine.orm.entity_manager']
+
+  login.role.model:
+    class: LoginBundle\Model\RoleModel
+    arguments: ['@doctrine.orm.entity_manager']
+

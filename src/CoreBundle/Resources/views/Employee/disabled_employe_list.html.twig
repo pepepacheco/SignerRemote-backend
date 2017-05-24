@@ -1,0 +1,50 @@
+{% extends '@Core/base_dashboard.html.twig' %}
+
+{% block dashboard %}
+
+    <div class="center">
+        <div class="container">
+
+            <div class="row" style="margin-top: 25px">
+
+                <h5 class="indigo-text col m12 center-align">Activar empleados</h5>
+
+            </div>
+
+            <div class="z-depth-1 grey lighten-5 row" style="display: inline-block; margin: 25px; padding: 32px 48px 0px 48px; border: 1px solid #EEE; width: 100%">
+                {% if employees | length > 0 %}
+
+                    <ul class="collection" style="margin-bottom: 40px">
+
+                        {% for employee in employees %}
+
+                            <li class="collection-item avatar" style="text-align: left">
+                                {% if employee.isWoman() %}
+                                    <img src="{{ asset('assets/uploads/defaultFemale.png') }}" class="circle materialboxed">
+                                {% else %}
+                                    <img src="{{ asset('assets/uploads/defaultMan.png') }}" class="circle materialboxed">
+                                {% endif %}
+                                <span>{{ employee.name }} {{ employee.lastName }}</span>
+                                <p>
+                                    {{ employee.email }}
+                                    <br>
+                                    {{ employee.workstation }}
+                                </p>
+                                <a id="activate-emplyee" data-id="{{ employee.id }}" class="secondary-content btn-floating btn-large waves-effect waves-light teal darken-3"><i class="material-icons">done</i></a>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+
+                {% else %}
+
+                    <h5 style="margin-bottom: 40px">No hay empleados desactivados</h5>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('assets/js/activate-employee.js') }}"></script>
+
+{% endblock %}

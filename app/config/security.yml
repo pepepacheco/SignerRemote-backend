@@ -1,0 +1,52 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    encoders:
+        LoginBundle\Entity\User:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+        CoreBundle\Entity\Employee:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+
+    providers:
+        user_db:
+            entity: { class: LoginBundle\Entity\User, property: email }
+
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            form_login:
+                provider: user_db
+                login_path: /
+                check_path: /login_check
+                remember_me: true
+                username_parameter: email
+                password_parameter: _password
+                always_use_default_target_path: true
+                default_target_path: /web/home
+            logout:
+                path: /logout
+                target: /
+            remember_me:
+                key: MiClaveSegura
+                lifetime: 1800
+                path: /.*
+                domain: ~
+            security: true
+            anonymous: ~
+
+    access_control:
+        - { path: ^/web, roles: ROLE_USER }
+

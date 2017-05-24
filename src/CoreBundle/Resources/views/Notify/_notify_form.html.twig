@@ -1,0 +1,54 @@
+<div class="z-depth-1 grey lighten-5 row">
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div style="padding: 25px">
+        <div class="row">
+            <div class="input-field col m6 col s12">
+                {{ form_row(form.employee) }}
+            </div>
+            <div class="input-field col m6 col s12">
+                {{ form_row(form.sendDate) }}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col m6 col s12">
+                <ul id="collapsible-map" class="collapsible popout" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header" style="text-align: left" ><i class="material-icons">location_on</i>Seleccionar ubicación</div>
+                        <div class="collapsible-body">
+                            {% include '@Core/Notify/_notify_map.htm.twig' %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col m6 col s12">
+                {{ form_row(form.dayRepeat) }}
+            </div>
+            <button class="btn waves-effect waves-light teal darken-3" type="submit" name="action" style="float: right">Enviar
+                <i class="material-icons right">send</i>
+            </button>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+        $('label').addClass('active');
+        $('label[for=corebundle_notification_dayRepeat]').addClass('left')
+
+        $('#collapsible-map').click(function () {
+            google.maps.event.trigger(document.getElementById('map'), 'resize');
+
+        });
+    });
+</script>
+
+
+
+

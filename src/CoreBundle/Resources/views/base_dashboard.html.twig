@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <header>
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="{{ path('edit_user') }}" style="text-align: center">Editar Perfil</a></li>
+            <li><a href="{{ path('employess_disabled') }}" style="text-align: center">Activar empleados</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ logout_path() }}" style="text-align: center" >Cerrar Sesión</a></li>
+        </ul>
+
+        <nav class="blue-text darken-4" style="background-color: #3f51b5 ">
+            <div class="nav-wrapper">
+                <a href="{{ path('home') }}" class="brand-logo">Touch Remote</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="{{ path('home') }}" data-activates="dropdown1">
+                            <i class="material-icons left">dashboard</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown1">Mi Perfil
+                            <i class="material-icons right">arrow_drop_down</i>
+                            <i class="material-icons left">perm_identity</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('load_notification') }}">Notificaciones
+                            <i class="material-icons left">settings_remote</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('employee_list') }}">Empleados
+                            <i class="material-icons left">supervisor_account</i>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="#">Notificaciones</a></li>
+                    <li><a href="{{ path('employee_list') }}">Empleados</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="center">
+                {% block dashboard %}
+                    <h3> hola {{ user_name }}</h3>
+
+                {% endblock %}
+            </div>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <footer class="footer-copyright">
+            <div class="container">
+                CC 2017 Rafael Vargas del Moral
+                <a class="grey-text text-lighten-4 right" href="#!">Github</a>
+            </div>
+        </footer>
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            $(".dropdown-button").dropdown();
+
+            $(".button-collapse").sideNav();
+        });
+    </script>
+
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+
+        .page-footer{
+            background-color: #00695c;
+
+        }
+
+        ul.dropdown-content.select-dropdown li span {
+            color: #3f51b5
+        }
+
+        .input-field input:focus + label {
+            color: #3f51b5;
+        }
+        .input-field input[type]:focus {
+            border-bottom: 1px solid #3f51b5;
+            box-shadow: 0 1px 0 0 #3f51b5;
+        }
+
+        /* label focus color */
+        .input-field input[type]:focus + label {
+            color: #3f51b5;
+        }
+    </style>
+
+{% endblock %}
+
+

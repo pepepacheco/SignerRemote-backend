@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+            <link href="{{ asset('assets/css/materialize.min.css') }}" rel="stylesheet">
+
+            <link href="{{ asset('assets/css/input-fields-color.css') }}" rel="stylesheet">
+
+        {% endblock %}
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block content %}
+
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('assets/js/materialize.min.js') }}"></script>
+            <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.15/js/dataTables.material.min.js"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        {% endblock %}
+    </body>
+</html>

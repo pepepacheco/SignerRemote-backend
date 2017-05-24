@@ -1,0 +1,56 @@
+<div class="z-depth-1 grey lighten-5 row">
+    <div style="padding: 25px">
+        <table id="notification-list" class="mdl-data-table striped centered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Empleado</th>
+                <th>Hora</th>
+                <th>Dia/s</th>
+                <th>Dirección</th>
+                <th>
+                    <a class="btn-floating btn-large waves-effect waves-light red">
+                        <i class="material-icons" id="delete-notification-button">delete</i>
+                    </a>
+                </th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for notify in notifications %}
+                <tr>
+                    <td>{{ notify.employee }}</td>
+                    <td>{{ notify.sendDate | date('H:i') }}</td>
+                    <td>{{ notifyService.parseDaysToString(notify.dayRepeat) }}</td>
+                    <td>{{ notify.address }}</td>
+                    <td>
+                        <input type="checkbox" name="delete" id="{{ notify.id }}" />
+                        <label for="{{ notify.id }}"></label>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<style>
+    .pagination {
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    #notification-list_info{
+        margin-top: 25px;
+    }
+
+    #notification-list_length{
+        text-align: left;
+    }
+
+    #notification-list_filter{
+        text-align: left;
+    }
+</style>
+
+<script src="{{ asset('assets/js/notification.js') }}"></script>

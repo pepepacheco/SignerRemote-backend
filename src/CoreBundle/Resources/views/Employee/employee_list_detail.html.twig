@@ -1,0 +1,137 @@
+{% extends '@Core/base_dashboard.html.twig' %}
+
+{% block dashboard %}
+    <div class="z-depth-1 grey lighten-5 row">
+
+        <table id="employee-list" class="mdl-data-table striped centered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>
+                    <a href="{{ path('employee_add') }}" class="btn-floating btn-large waves-effect waves-light indigo">
+                        <i class="material-icons">add</i>
+                    </a>
+                </th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>email</th>
+                <th>teléfono</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Puesto</th>
+                <th>Editar</th>
+                <th>
+                    <a class="btn-floating btn-large waves-effect waves-light red">
+                        <i class="material-icons" id="delete-employee-button">delete</i>
+                    </a>
+                </th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {% for employee in employees %}
+                <tr>
+                    <td>
+
+                        {% if employee.isWoman() %}
+                            <img width="80" src="{{ asset('assets/uploads/defaultFemale.png') }}" style="padding-left: 15px" class="circle materialboxed">
+                        {% else %}
+                            <img width="80" src="{{ asset('assets/uploads/defaultMan.png') }}" style="padding-left: 15px" class="circle materialboxed">
+                        {% endif %}
+                    </td>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.lastName }}</td>
+                    <td>{{ employee.email }}</td>
+                    <td>{{ employee.phone }}</td>
+                    <td>{{ employee.birthdate.format('d-m-Y') }}</td>
+                    <td>{{ employee.workstation }}</td>
+                    <td>
+                        <a class="btn-floating btn-large waves-effect waves-light teal darken-3 edit-employee-button" data-id="{{ employee.id }}">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="delete" id="{{ employee.id }}" />
+                        <label for="{{ employee.id }}"></label>
+                    </td>
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <div id="modal-employee-edit" class="modal">
+        <div id="modal-employee-edit-content" class="modal-content">
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#employee-list').DataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+
+            });
+            $('select').material_select();
+            $('label').addClass('active');
+            $('.materialboxed').materialbox();
+        });
+    </script>
+
+    <style>
+        .mdl-grid {
+            margin-top: 25px;
+            display: block;
+        }
+
+        .pagination {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .modal {
+            max-height: 96% !important;
+            width: 80% !important;
+        }
+
+        #employee-list_length{
+            text-align: left;
+            padding: 15px;
+            width: 50%;
+            float: left;
+        }
+
+        #employee-list_filter{
+            text-align: left;
+            padding: 15px;
+            width: 50%;
+            float: right;
+        }
+    </style>
+
+    <script src="{{ asset('assets/js/employee.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends '@Core/base_dashboard.html.twig' %}
+
+{% block dashboard %}
+
+    <style>
+        .tabs .tab a{
+            color:#777;
+        } /*Black color to the text*/
+
+        .tabs .tab a:hover {
+            color:#00695c;
+        } /*Text color on hover*/
+
+        .tabs .tab a.active {
+            color:#00695c;
+        } /*Background and text color when a tab is active*/
+
+        .tabs .indicator {
+            background-color:#00695c;
+        } /*Color of underline*/
+    </style>
+
+    <div class="row" style="margin-top: 15px">
+        <div class="col s12">
+            <ul class="tabs">
+                {% if message is defined %}
+                    <li class="tab col s6" style="color: blue"><a href="#test1"> Información</a></li>
+                    <li class="tab col s6"><a href="#test2" class="active">Nueva notificación</a></li>
+
+                    <script>
+                        $(document).ready(function () {
+                            Materialize.toast('{{ message }}', 4000);
+                        });
+                    </script>
+
+                {% else %}
+                    <li class="tab col s6" style="color: blue"><a href="#test1" class="active"> Información</a></li>
+                    <li class="tab col s6"><a href="#test2">Nueva notificación</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+        <div id="test1" class="col s12" style="margin-top: 50px">
+            {% include'@Core/Notify/_notify_list.html.twig' %}
+        </div>
+
+        <div id="test2" class="col s12" style="margin-top: 50px">
+            {% include '@Core/Notify/_notify_form.html.twig' %}
+        </div>
+    </div>
+
+
+
+
+
+{% endblock %}

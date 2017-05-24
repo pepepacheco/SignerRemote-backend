@@ -1,0 +1,12 @@
+services:
+  employe.model:
+    class: CoreBundle\Model\EmployeeModel
+    arguments: ['@doctrine.orm.entity_manager']
+
+  notification.model:
+    class: CoreBundle\Model\NotificationModel
+    arguments: ['@doctrine.orm.entity_manager']
+
+  registration.model:
+    class: CoreBundle\Model\RegistrationModel
+    arguments: ['@doctrine.orm.entity_manager']

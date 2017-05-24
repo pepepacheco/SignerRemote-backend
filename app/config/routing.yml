@@ -1,0 +1,34 @@
+api:
+    resource: "@ApiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    defaults: {_format: json}
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    prefix:   /
+
+core:
+    resource: '@CoreBundle/Controller/'
+    type: annotation
+
+logi:
+    resource: '@LoginBundle/Controller/'
+    type: annotation
+
+login:
+    path: /
+    defaults: { _controller: LoginBundle:Security:login }
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"

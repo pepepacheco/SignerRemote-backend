@@ -3,13 +3,23 @@
 namespace CoreBundle\Model;
 
 
+use CoreBundle\Entity\Employee;
 use CoreBundle\Entity\Registration;
 use Doctrine\ORM\EntityManager;
+use LoginBundle\Entity\User;
 
 class RegistrationModel
 {
     private $entityManager;
     private $repository;
+
+    public function findAll() {
+        return $this->repository->findAll();
+    }
+
+    public function findActivates(User $user) {
+        return $this->repository->findActivates($user);
+    }
 
     function __construct(EntityManager $entityManager)
     {
@@ -17,7 +27,7 @@ class RegistrationModel
         $this->repository = $entityManager->getRepository('CoreBundle:Registration');
     }
 
-    public function add(Registration $new) {
+    public function add($new) {
         $this->entityManager->persist($new);
     }
 
@@ -31,8 +41,9 @@ class RegistrationModel
 
     public function calculateIsValidRegistration($longitude1, $longitude2, $latitude1, $latitude2, $radio) {
 
+        if ($longitude1 == 0 and $longitude2 == 0)
+            return false;
+
         return ( pow($longitude1, 2) - pow($longitude2, 2) ) + ( pow($latitude1, 2) - pow($latitude2, 2) ) < pow($radio, 2);
-
-
     }
 }

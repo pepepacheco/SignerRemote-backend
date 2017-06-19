@@ -10,3 +10,10 @@ services:
   registration.model:
     class: CoreBundle\Model\RegistrationModel
     arguments: ['@doctrine.orm.entity_manager']
+
+#Listeners:
+  vabadus.listener.proyecto:
+    class: CoreBundle\DeleteListener
+    arguments: ['@service_container']
+    tags:
+      - { name: doctrine.event_listener, event: preRemove }

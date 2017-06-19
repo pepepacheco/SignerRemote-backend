@@ -20,8 +20,20 @@
         } /*Color of underline*/
     </style>
 
+    <div class="row">
+        <nav style="background-color: #5c6bc0; text-align: left">
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a class="breadcrumb">TouchRemote</a>
+                    <a href="{{ path('load_notification') }}" class="breadcrumb">Notificaciones</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
     <div class="row" style="margin-top: 15px">
         <div class="col s12">
+
             <ul class="tabs">
                 {% if message is defined %}
                     <li class="tab col s6" style="color: blue"><a href="#test1"> Información</a></li>

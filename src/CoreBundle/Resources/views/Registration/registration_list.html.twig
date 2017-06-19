@@ -1,0 +1,113 @@
+{% extends '@Core/base_dashboard.html.twig' %}
+
+{% block dashboard %}
+    <div class="z-depth-1 grey lighten-5 row">
+
+        <nav style="background-color: #5c6bc0; text-align: left">
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a class="breadcrumb">TouchRemote</a>
+                    <a href="{{ path('load_registration') }}" class="breadcrumb">Registro</a>
+                </div>
+            </div>
+        </nav>
+
+        <table id="registration-list" class="mdl-data-table striped centered" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Empleado</th>
+                <th>Dirección solicitada</th>
+                <th>Hora solicitada</th>
+                <th>Hora de envío</th>
+                <th>Dias solicitados</th>
+                <th>Fecha de envío</th>
+                <th>Resultado</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {% for registration in registrations %}
+                <tr>
+                    <td>{{ registration.employee.name }} {{ registration.employee.lastName }}</td>
+                    <td>{{ registration.notification.address }}</td>
+                    <td>{{ registration.notification.sendDate |date("H:m") }}</td>
+                    <td style="color: blue">{{ registration.sendDate |date("H:m:s") }}</td>
+                    <td>{{ notifyService.parseDaysToString(registration.notification.dayRepeat) }}</td>
+                    <td style="color: blue">{{ registration.sendDate |date("d/m/Y") }}</td>
+
+                    {% if registration.isValid %}
+                        <td><i class="material-icons" style="color: green">done</i></td>
+                    {% else %}
+                        <td><i class="material-icons" style="color: red">error_outline</i></td>
+                    {% endif %}
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#registration-list').DataTable({
+                "language": {
+                    "sProcessing": "Procesando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "No se encontraron resultados",
+                    "sEmptyTable": "Ningún dato disponible en esta tabla",
+                    "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix": "",
+                    "sSearch": "Buscar:",
+                    "sUrl": "",
+                    "sInfoThousands": ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst": "Primero",
+                        "sLast": "Último",
+                        "sNext": "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+
+            });
+            $('select').material_select();
+            $('label').addClass('active');
+            $('.materialboxed').materialbox();
+        });
+    </script>
+
+    <style>
+        .mdl-grid {
+            margin-top: 25px;
+            display: block;
+        }
+
+        .pagination {
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        #registration-list_length{
+            text-align: left;
+            padding: 15px;
+            width: 50%;
+            float: left;
+        }
+
+        #registration-list_filter{
+            text-align: left;
+            padding: 15px;
+            width: 50%;
+            float: right;
+        }
+    </style>
+
+{% endblock %}

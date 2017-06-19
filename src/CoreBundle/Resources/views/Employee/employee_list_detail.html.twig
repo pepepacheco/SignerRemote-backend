@@ -1,7 +1,16 @@
 {% extends '@Core/base_dashboard.html.twig' %}
 
 {% block dashboard %}
+
     <div class="z-depth-1 grey lighten-5 row">
+        <nav style="background-color: #5c6bc0; text-align: left">
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a class="breadcrumb">TouchRemote</a>
+                    <a href="{{ path('employee_list') }}" class="breadcrumb">Empleados</a>
+                </div>
+            </div>
+        </nav>
 
         <table id="employee-list" class="mdl-data-table striped centered" cellspacing="0" width="100%">
             <thead>

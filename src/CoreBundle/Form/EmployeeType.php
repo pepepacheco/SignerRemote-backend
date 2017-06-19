@@ -55,7 +55,7 @@ class EmployeeType extends AbstractType
                 'label' => 'Puesto de trabajo'
             ))
             ->add('woman', 'choice', array(
-                'label' => 'Sexo',
+                'label' => false,
                 'choices' => array(
                     '1' => 'Sra.',
                     '0' => 'Sr.'

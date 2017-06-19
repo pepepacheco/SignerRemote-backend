@@ -32,7 +32,7 @@ class NotificationModel
         return $this->repository->finOneById($user, $id);
     }
 
-    public function save(Notification $new) {
+    public function save($new) {
         $this->entityManager->persist($new);
     }
 

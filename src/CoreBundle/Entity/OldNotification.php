@@ -4,18 +4,14 @@ namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
-use JMS\Serializer\Annotation as JMS;
-
 
 /**
- * Notification
  *
- * @ORM\Table(name="notification")
- * @ORM\Entity(repositoryClass="CoreBundle\Repository\NotificationRepository")
+ * @ORM\Table(name="old_notification")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\OldNotificationRepository")
  */
-class Notification
+class OldNotification
 {
     /**
      * @var string $id
@@ -23,7 +19,6 @@ class Notification
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="CUSTOM")
      * @ORM\CustomIdGenerator(class="Kiefernwald\DoctrineUuid\Doctrine\ORM\UuidGenerator")
-     * @JMS\Groups({"notification"})
      */
     private $id;
 
@@ -44,7 +39,6 @@ class Notification
      * @var float
      *
      * @ORM\Column(name="longitude", type="float")
-     * @JMS\Groups({"notification"})
      */
     private $longitude;
 
@@ -52,7 +46,6 @@ class Notification
      * @var float
      *
      * @ORM\Column(name="latitude", type="float")
-     * @JMS\Groups({"notification"})
      */
     private $latitude;
 
@@ -60,7 +53,6 @@ class Notification
      * @var integer
      *
      * @ORM\Column(name="radius", type="integer")
-     * @JMS\Groups({"notification"})
      */
     private $radius;
 
@@ -68,7 +60,6 @@ class Notification
      * @var string
      *
      * @ORM\Column(name="addresss", type="string")
-     * @JMS\Groups({"notification"})
      */
     private $address;
 
@@ -76,25 +67,17 @@ class Notification
      * @var \DateTime
      *
      * @ORM\Column(name="sendDate", type="datetime", nullable=false)
-     * @JMS\Groups({"notification"})
      */
     private $sendDate;
 
     /**
      * @ORM\ManyToMany(targetEntity="TypeDaysRepeat")
-     * @ORM\JoinTable(name="notification_day_repeat",
-     *      joinColumns={@ORM\JoinColumn(name="notification_id", referencedColumnName="id")},
+     * @ORM\JoinTable(name="old_notification_day_repeat",
+     *      joinColumns={@ORM\JoinColumn(name="old_notification_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="day_repeat_id", referencedColumnName="id")}
      *      )
-     * @JMS\Groups({"notification"})
      */
     private $dayRepeat;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Registration", mappedBy="notification")
-     *
-     */
-    private $registration;
 
     /**
      * @var boolean
@@ -282,21 +265,5 @@ class Notification
     public function setActive($active)
     {
         $this->active = $active;
-    }
-
-    /**
-     * @return Registration
-     */
-    public function getRegistration()
-    {
-        return $this->registration;
-    }
-
-    /**
-     * @param mixed $registration
-     */
-    public function setRegistration($registration)
-    {
-        $this->registration = $registration;
     }
 }

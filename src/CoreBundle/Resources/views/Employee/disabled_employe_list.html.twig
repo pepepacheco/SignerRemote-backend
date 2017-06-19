@@ -2,7 +2,16 @@
 
 {% block dashboard %}
 
-    <div class="center">
+    <div class="center row">
+        <nav style="background-color: #5c6bc0; text-align: left">
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a class="breadcrumb">TouchRemote</a>
+                    <a href="{{ path('employee_list') }}" class="breadcrumb">Empleados</a>
+                    <a href="{{ path('employess_disabled') }}" class="breadcrumb">Activar/Desactivar</a>
+                </div>
+            </div>
+        </nav>
         <div class="container">
 
             <div class="row" style="margin-top: 25px">

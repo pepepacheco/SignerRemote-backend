@@ -137,6 +137,8 @@ class EmployeeController extends Controller
         $birthdate = $formData['birthdate'];
         $password = $formData['password'];
         $workstation = $formData['workstation'];
+        if ($formData['woman'])
+            $isWoman = $formData['woman'];
 
         if ($name) {
             $employee->setName($name);
@@ -164,6 +166,14 @@ class EmployeeController extends Controller
         }
         if ($workstation) {
             $employee->setWorkstation($workstation);
+        }
+
+        if (isset($isWoman)) {
+            if ($isWoman == "1")
+                $employee->setWoman(1);
+
+            else if ($isWoman == "0")
+                $employee->setWoman(0);
         }
 
         return $employee;

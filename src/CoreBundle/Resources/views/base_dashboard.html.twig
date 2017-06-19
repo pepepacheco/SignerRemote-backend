@@ -10,20 +10,20 @@
             <li><a href="{{ logout_path() }}" style="text-align: center" >Cerrar Sesión</a></li>
         </ul>
 
-        <nav class="blue-text darken-4" style="background-color: #3f51b5 ">
+        <nav style="background-color: #3f51b5; text-align: left;">
             <div class="nav-wrapper">
-                <a href="{{ path('home') }}" class="brand-logo">Touch Remote</a>
+                <a class="brand-logo">Touch Remote</a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="{{ path('home') }}" data-activates="dropdown1">
-                            <i class="material-icons left">dashboard</i>
-                        </a>
-                    </li>
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">Mi Perfil
                             <i class="material-icons right">arrow_drop_down</i>
                             <i class="material-icons left">perm_identity</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('load_registration') }}">Registro
+                            <i class="material-icons left">done</i>
                         </a>
                     </li>
                     <li>
@@ -40,6 +40,7 @@
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="#">Notificaciones</a></li>
                     <li><a href="{{ path('employee_list') }}">Empleados</a></li>
+                    <li><a href="{{ path('load_registration') }}">Empleados</a></li>
                 </ul>
             </div>
         </nav>
@@ -49,7 +50,6 @@
         <div class="container">
             <div class="center">
                 {% block dashboard %}
-                    <h3> hola {{ user_name }}</h3>
 
                 {% endblock %}
             </div>
@@ -60,7 +60,7 @@
         <footer class="footer-copyright">
             <div class="container">
                 CC 2017 Rafael Vargas del Moral
-                <a class="grey-text text-lighten-4 right" href="#!">Github</a>
+                <a class="grey-text text-lighten-4 right" href="https://github.com/rvargasdelmoral/SignerRemote-backend" target="_blank">Github</a>
             </div>
         </footer>
     </footer>

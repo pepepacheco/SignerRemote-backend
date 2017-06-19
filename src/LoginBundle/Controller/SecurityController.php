@@ -27,6 +27,7 @@ class SecurityController extends Controller
                 'email' => $email,
                 'last_username' => $lastUserName,
                 'err' => $error,
+                'msg_err' => 'Usuario o contraseña incorrectos'
             )
         );
     }

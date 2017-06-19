@@ -3,15 +3,13 @@
 namespace CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as JMS;
 
 /**
- * Registration
  *
- * @ORM\Table(name="registration")
- * @ORM\Entity(repositoryClass="CoreBundle\Repository\RegistrationRepository")
+ * @ORM\Table(name="old_registration")
+ * @ORM\Entity(repositoryClass="CoreBundle\Repository\OldRegistrationRepository")
  */
-class Registration
+class OldRegistration
 {
     /**
      * @var string $id
@@ -30,8 +28,8 @@ class Registration
     private $employee;
 
     /**
-     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\Notification", cascade={"remove"}, inversedBy="registration")
-     * @ORM\JoinColumn(name="notification_id", referencedColumnName="id", onDelete="CASCADE", nullable=true)
+     * @ORM\ManyToOne(targetEntity="CoreBundle\Entity\OldNotification")
+     * @ORM\JoinColumn(name="odl_notification_id", referencedColumnName="id", nullable=true)
      */
     private $notification;
 

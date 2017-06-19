@@ -15,6 +15,35 @@
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
 
+                <div class="row">
+                    <div class="col md 6">
+                       {{ form_row(form.name) }}
+                    </div>
+                    <div class="col md 6">
+                        {{ form_row(form.lastName) }}
+                    </div>
+                    <div class="col md 6">
+                        {{ form_row(form.email) }}
+                    </div>
+                    <div class="col md 6">
+                        {{ form_row(form.password) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col md 6">
+                        {{ form_row(form.phone) }}
+                    </div>
+                    <div class="col md 6">
+                        {{ form_row(form.birthdate) }}
+                    </div>
+                    <div class="col md 6">
+                        {{ form_row(form.workstation) }}
+                    </div>
+                    <div class="col md 6">
+                        {{ form_row(form.woman) }}
+                    </div>
+                </div>
+
 
                 {{ form_widget(form) }}
 

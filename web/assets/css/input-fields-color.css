@@ -5,7 +5,7 @@
 
 /* icon prefix focus color */
 .input-field .prefix.active {
-    color: #673ab7;
+    color: #00695c;
 }
 
 .input-field .prefix {
@@ -26,24 +26,24 @@
  */
 .picker { outline: none; } /* Optional feature */
 /* Header - Day of the week */
-.picker__weekday-display { background-color: #7c4dff;
+.picker__weekday-display { background-color: #00695c;
     font-weight: 600;}
 /* Body - Today info */
-.picker__date-display { background-color: #7c4dff; }
+.picker__date-display { background-color: #00695c; }
 /* Buttons of actions */
 .picker__nav--prev:hover { background-color: #fff3e0; }
 .picker__nav--next:hover { background-color: #fff3e0; }
 .picker__nav--prev:before {
     border-left: 0;
-    border-right: 0.75em solid #673ab7;
+    border-right: 0.75em solid #3f51b5;
 }
 .picker__nav--next:before {
     border-right: 0;
-    border-left: 0.75em solid #673ab7;
+    border-left: 0.75em solid #3f51b5;
 }
-.picker__today { color: #673ab7; }
+.picker__today { color: #3f51b5; }
 .picker__clear { /* If you want to customize */ }
-.picker__close { color: #673ab7; }
+.picker__close { color: #3f51b5; }
 .btn-flat.picker__today:active { background-color: #fff3e0; }
 .btn-flat.picker__close:active { background-color: #fff3e0; }
 .btn-flat.picker__clear:active { background-color: #fff3e0; }
@@ -58,14 +58,14 @@
 /* Every month of the year except: today */
 .picker__day { /* If you want to customize */ }
 .picker__day:hover { /* If you want to customize */ }
-.picker__day--infocus:hover { color: #673ab7; }
+.picker__day--infocus:hover { color: #3f51b5; }
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {
     color: #F5F4F3;
     font-weight: 700;
 }
-.picker__day.picker__day--infocus.picker__day--selected.picker__day--highlighted { background-color: #673ab7; }
+.picker__day.picker__day--infocus.picker__day--selected.picker__day--highlighted { background-color: #3f51b5; }
 /* Today */
-.picker__day.picker__day--infocus.picker__day--today.picker__day--selected.picker__day--highlighted { background-color: #673ab7; }
+.picker__day.picker__day--infocus.picker__day--today.picker__day--selected.picker__day--highlighted { background-color: #3f51b5; }
 .picker__day.picker__day--today
-{ color: #673ab7;
+{ color: #3f51b5;
     font-weight: 700; }

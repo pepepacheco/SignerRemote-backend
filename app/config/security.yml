@@ -35,7 +35,7 @@ security:
                 username_parameter: email
                 password_parameter: _password
                 always_use_default_target_path: true
-                default_target_path: /web/home
+                default_target_path: /web/employee
             logout:
                 path: /logout
                 target: /

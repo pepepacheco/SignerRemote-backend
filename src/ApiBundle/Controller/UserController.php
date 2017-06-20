@@ -61,7 +61,7 @@ class UserController extends FOSRestController
     }
 
     /**
-     * @PUT("/changePassword/{employeeId}/{userId}/{old}/{new}")
+     * @Put("/changePassword/{employeeId}/{userId}/{old}/{new}")
      */
     public function changePasswordAction($employeeId, $userId, $old, $new) {
 

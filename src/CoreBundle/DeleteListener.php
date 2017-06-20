@@ -30,10 +30,11 @@ class DeleteListener
             $notificationModel = $this->container->get('notification.model');
             $notificationModel->save($oldNotification);
 
+            /*
             $oldRegistration = new OldRegistration();
 
             $this->bindDataRegistrationAndSave($entity->getRegistration(), $oldRegistration, $oldNotification);
-
+            */
         }
 
     }
